@@ -1,0 +1,29 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.heading {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.card-set {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 80px;
+}
+
+.cards {
+  margin-left: -140px;
+  scale: 1.3;
+  transition: transform 0.5s ease; /* Smooth transition for the hover effect */
+}
+
+.cards:hover {
+  transform: translateY(-30px); /* Move the card up by 10px */
+}
