@@ -64,6 +64,14 @@ const Card = () => {
       }
     };
 
+    const sortCards = (cards) => {
+      const card = cards.sort(
+        (a, b) => valueOrder.indexOf(a.value) - valueOrder.indexOf(b.value)
+      );
+
+      return card;
+    };
+
     if (deckID) {
       const getCards = async () => {
         const spades = [];
@@ -75,13 +83,63 @@ const Card = () => {
         setFirstSet(firstSet);
 
         firstSet.forEach((card) => {
-          if (card.code[1] === "S") spades.push(card);
-          else if (card.code[1] === "H") hearts.push(card);
-          else if (card.code[1] === "D") diamonds.push(card);
+          if (card.suit === "SPADES") spades.push(card);
+          else if (card.suit === "HEARTS") hearts.push(card);
+          else if (card.suit === "DIAMONDS") diamonds.push(card);
           else clubs.push(card);
         });
 
-        setHand([spades, hearts, diamonds, clubs]);
+        setHand([
+          sortCards(spades),
+          sortCards(hearts),
+          sortCards(diamonds),
+          sortCards(clubs),
+        ]);
+
+        // if (spades[0].value[0] === "J") {
+        //   spades.push(spades.shift(i));
+        // }
+
+        // if (spades[0].value[0] === "Q") {
+        //   spades.push();
+        //   // spades.shift();
+        // }
+
+        // if (spades[0].value[0] === "K") {
+        //   spades.push();
+        //   spades.shift();
+        // }
+
+        // if (spades[0].value[0] === "A") {
+        //   spades.push();
+        //   spades.shift();
+        // }
+
+        for (let i = 0; i < spades.length; i++) {
+          if (spades[i].value[0] === "J") {
+            console.log(spades);
+            spades.push(spades.shift());
+            console.log(spades);
+          } else if (spades[i].value[0] === "Q") {
+            console.log(spades);
+            spades.push(spades.shift());
+            console.log(spades);
+          } else if (spades[i].value[0] === "K") {
+            console.log(spades);
+            spades.push(spades.shift());
+            console.log(spades);
+          } else if (spades[i].value[0] === "A") {
+            spades.push(spades.shift());
+          }
+        }
+
+        // console.log(spades);
+
+        // while (spades[0].code === 'J' || spades[0].code === 'Q' || spades[0].code === 'K' || spades[0].code === 'A') {
+        //   if (spades.code[0] )
+        // }
+
+        // if (spades[0] === "")
       };
 
       getCards();
@@ -105,7 +163,7 @@ const Card = () => {
       </div>
 
       <div className="container">
-        <h2 className="heading">Sorted by suite</h2>
+        <h2 className="heading">Sorted by suit</h2>
         <div className="card-set">
           {hand.map((suitSet, index) => (
             <div key={index}>
