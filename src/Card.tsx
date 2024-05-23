@@ -104,19 +104,22 @@ const Card = () => {
         </div>
       </div>
 
-      <div>
-        {hand.map((suitSet, index) => (
-          <div key={index}>
-            {suitSet.map((card) => (
-              <img
-                className="cards"
-                key={`hand-${card.code}`}
-                src={card.image}
-                alt={card.value + " of " + card.suit}
-              />
-            ))}
-          </div>
-        ))}
+      <div className="container">
+        <h2 className="heading">Sorted by suite</h2>
+        <div className="card-set">
+          {hand.map((suitSet, index) => (
+            <div key={index}>
+              {suitSet.map((card) => (
+                <img
+                  className="cards"
+                  key={`hand-${card.code}`}
+                  src={card.image}
+                  alt={card.value + " of " + card.suit}
+                />
+              ))}
+            </div>
+          ))}
+        </div>
       </div>
     </>
   );
