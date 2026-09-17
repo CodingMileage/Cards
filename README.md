@@ -2,4 +2,4 @@
 
 ![Example](public/cards.png)
 
-# Returns unsorted and sorted cards
+## Returns unsorted and sorted cards
